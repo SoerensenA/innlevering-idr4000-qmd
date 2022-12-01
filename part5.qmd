@@ -1,3 +1,241 @@
 # Deloppgave 5: Analysere repeterte målinger
 
-<!-- Part 1: Analyzing repeated measures experiments -->
+---
+title: "Assignment 5"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# Introduksjon
+
+Adaptasjon man får fra styrketrening varierer i stor grad av treningsvariabler som volum, intensitet, hvile mellom repetisjoner og sett, valg av øvelser og frekvensen på øvelsene [@hoffman2009]. Totalt treningsvolum under økter har fått mye oppmerksomhet, og selv om man kan se at et lavt volum gir like adaptasjoner i muskelstyrke og hypertrofi som et moderat treningsvolum [@cannon2010]; [@mitchell2012] konkluderer fremdeles meta-analyser i favør et moderat volum for best mulig effekt [@rhea2003]; [@krieger2009], [@krieger2010]; [@schoenfeld2016].
+
+Ettersom det er noe uenighet om hvilken treningsmetode som gir størst mulig effekt, vil vi i denne studien undersøke effektene av ett sett versus tre sett med styrketrening over en treningsperiode på 12 uker. Hypotesen er at gruppen som trener tre sett får større effekt på muskelstyrke og hypertrofi gjennom treningsintervensjonen på 12 uker.
+
+# Metode
+
+41 kvinner og menn ble rekruttert til studiet. Inklusjonskriteriene for deltakelse var at deltagerne måtte være mellom 18 og 40 år, ikke-røykende, ha en treningshistorie med minst en ukentlig styrketreningsøkt det siste året og være skadefri. Sju av de opprinnelige 41 deltakerne ble ekskludert på bakgrunn av at de ikke klarte å fullføre 85% av planlagte treningsøkter av ulike grunner: smerter i underekstremitet under trening (n = 5), skade som ikke var relatert til studiet (n = 1), klarte ikke å gjennomføre studieprotokoll (n= 1).
+
+```{r}
+#| label: "tableone"
+#| echo: false
+#| warning: false
+#| message: false
+
+data("dxadata"); data("strengthvolume")
+library(tidyverse)
+library(exscidata)
+library(lme4)
+library(emmeans)
+library(pbkrtest)
+library(lmerTest)
+library(cowplot)
+library(gt)
+
+ tbl_data <- dxadata %>%
+  select(participant:weight, lean.left_leg, lean.right_leg) %>%
+  pivot_longer(names_to = "leg", 
+               values_to = "lean.mass", 
+               cols = lean.left_leg:lean.right_leg) %>% 
+  mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
+         sets = if_else(multiple == leg, "multiple", "single"),
+         lean.mass = lean.mass / 1000) %>%
+  select(participant, age, height, weight, time, sex, include, sets, leg, lean.mass) %>%
+  full_join(strengthvolume) %>% 
+  filter(exercise == "legext",
+         !is.na(load)) %>%
+    group_by(participant) %>% 
+  filter(time == "pre",
+         include == "incl") %>% 
+  group_by(sets) %>% 
+  mutate(N = n()) %>%
+  pivot_longer(names_to = "variable",
+               values_to = "values",
+               cols = c(age, height, weight, lean.mass, load, N)) %>%
+  group_by(sets, variable) %>% 
+  summarise(Mean = mean(values, na.rm = T),
+            SD = sd(values, na.rm = T)) %>%
+   mutate(N = if_else(variable == "N",
+  as.character(Mean),
+  paste0(signif(Mean, 3),
+  " (",signif(SD, 3),
+  ")"))) %>%
+  select(-SD, -Mean) %>%
+   mutate(variable = factor(variable, levels = c("N", "age", "height", "weight", "lean.mass", "load"),
+                            labels = c("N", "Alder", "Kroppslengde (cm)", "Kroppsvekt (kg)", "Fettfri masse (kg)", "1RM kneekstrensjon (kg)"))) %>% 
+  pivot_wider(names_from = sets,
+              values_from = N) %>%
+  gt() %>% 
+  cols_label(multiple = "3 sett",
+             single = "1 sett",
+             variable = "",) %>% 
+   tab_header(title = "Karakteristikker av deltakerne ved pretest ") %>%
+   tab_footnote(footnote = "Verdier er regnet som gjennomsnitt av N")
+ tbl_data
+```
+
+# Tester
+
+Styrketestene ble gjennomført før(pre) og etter(post) intervensjonen. Det ble gjennomført isokinetiske og isometriske unilaterale øvelser på kneekstensjon med dynamometer (Cybex 6000, Cybex International, Medway USA). Maksimalt isokinetisk dreiemoment ble målt på tre ulike vinkelhastigheter (60o, 120o og 240o s-1). Isometrisk styrke ble målt i 30o graders vinkel. 1RM ble målt i unilateral beinpress og kneekstensjon.
+
+En standardisert oppvarmingsprotokoll ble gjennomført med 5 minutter på ergometersykkel samt standardiserte oppvarmingsrepetisjoner i dynamometeret. Som oppvarming til 1RM testen ble det gjennomført 10, 6 og 3 repetisjoner på 50, 75 og 85% av forventet 1RM, respektivt. 1RM ble så funnet ved en gradvis økning av belastning til deltaker feilet å fullføre en repetisjon. Deltakerne fikk 4-6 forsøk og den høyeste belastningen ble så registrert som deltakerens 1RM.
+
+### Dataanalyse
+
+Deskriptiv data er presentert som gjennomsnitt (standardfeil). For å undersøke effekten av ulikt treningsvolum på hypertrofi og muskelstyrke ble en ANCOVA test brukt. Statisk signinfikans er satt til P \< 0.05.
+
+## Resultater
+
+Resultatene viser en signifikant større endring i 3 sett gruppen kontra 1 sett gruppen når det kommer til endring i både muskelstyrke (P = 0,004) og i fettfri benmasse (p = 0,037).
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: "tbl-st"
+#| tbl-cap: "Effekten av ulikt treningsvolum på muskelstyrke" 
+
+
+st2 <- strengthvolume %>% 
+  pivot_wider(names_from = time,
+              values_from = load) %>%
+  filter(exercise == "legext",
+         include == "incl") %>% 
+  mutate(post = as.numeric(post),
+         pre = as.numeric(pre))
+  m1 <- lm(post ~ pre + sets, data = st2)
+  m2 <- lm(post ~ sex + pre + sets, data = st2)
+  m_st <- lmer(post ~ pre + sets + (1|participant), 
+          data = st2)
+
+  
+  st2_res <- summary(m_st)$coef %>% 
+    data.frame() %>% 
+    mutate(koeffisienter = c("Intercept", "Tid", "1sett")) %>% 
+    select(koeffisienter, Estimate, Std..Error, df, t.value, Pr...t..) %>%
+   gt() %>% 
+    cols_label(Estimate = "estimat",
+             Std..Error = "se",
+             df = "df",
+             t.value = "t.verdi",
+             Pr...t.. = "p.verdi") %>% 
+  fmt_number(columns = Estimate:Pr...t.., decimals = 3) %>% 
+    tab_footnote(footnote = "Forkortelser: se, standardfeil; df, frihetsgrader")
+  
+  st2_res
+  
+  
+```
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+
+
+styrke <- strengthvolume %>%
+  group_by(participant) %>%
+  filter(exercise == "legext",
+         !is.na(load)) %>%
+  mutate(time = factor(time, levels = c("pre", "post")),
+         group = factor(sets, levels = c("Single", "Multiple"))) %>%
+  filter(!is.na(load), time == factor(time, levels = c("pre", "post"))) %>%
+  mutate(time = factor(time, levels = c("pre", "post")),
+         group = factor(sets, levels = c("Single", "Multiple"))) %>%
+ ggplot(aes(time, load, group = paste(participant, sets), color = sets)) + geom_line() + theme_bw() + labs(title = "Figur 2: Endring i styrke",
+       y = "Endring i styrke",
+       x = "Tid",
+       caption = "Figur 2: Viser forskjellene mellom 1 og 3 sett for endringer i styrke for hver deltaker, sorter i farger")
+
+styrke
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: "tbl-lbm"
+#| tbl-cap: "Effekten av ulikt treningsvolum på fettfri benmasse"
+
+lmb <- dxadata %>%
+  select(participant:weight, lean.left_leg, lean.right_leg) %>%
+  pivot_longer(names_to = "leg", 
+               values_to = "lean.mass", 
+               cols = lean.left_leg:lean.right_leg) %>% 
+  mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
+         sets = if_else(multiple == leg, "multiple", "single"),
+         lean.mass = lean.mass / 1000) %>%
+  select(participant, sets, time, include, leg, lean.mass) %>%
+  filter(include == "incl") %>% 
+  pivot_longer(names_to = "variable",
+               values_to = "values",
+               cols = c( lean.mass)) %>%
+  pivot_wider(names_from = time,
+              values_from = values) %>%
+  mutate(post = as.numeric(post),
+         pre = as.numeric(pre)) 
+
+  m_lmb <- lmer(post ~ pre + sets + (1|participant), 
+          data = lmb)
+  
+  lmb_res <- summary(m_lmb)$coef %>% 
+    data.frame() %>% 
+    mutate(koeffisienter = c("Intercept", "Tid", "1sett")) %>% 
+    select(koeffisienter, Estimate, Std..Error, df, t.value, Pr...t..) %>%
+   gt() %>% 
+    cols_label(Estimate = "estimat",
+             Std..Error = "se",
+             df = "df",
+             t.value = "t.verdi",
+             Pr...t.. = "p.verdi") %>% 
+  fmt_number(columns = Estimate:Pr...t.., decimals = 3) %>%
+    tab_footnote(footnote = "Forkortelser: se, standardfeil; df, frihetsgrader")
+
+  lmb_res
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+lmb2 <- dxadata %>%
+  select(participant:weight, lean.left_leg, lean.right_leg) %>%
+  pivot_longer(names_to = "leg", 
+               values_to = "lean.mass", 
+               cols = lean.left_leg:lean.right_leg) %>% 
+  mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
+         sets = if_else(multiple == leg, "multiple", "single"),
+         lean.mass = lean.mass / 1000) %>%
+  select(participant, sets, time, include, leg, lean.mass) %>%
+  filter(include == "incl") %>% 
+  pivot_longer(names_to = "variable",
+               values_to = "values",
+               cols = c( lean.mass)) %>%
+  mutate(time = factor(time, levels = c("pre", "post")),
+         group = factor(sets, levels = c("multiple", "single"))) %>%
+  ggplot(aes(time, values, group = paste(participant, sets), color = sets)) + geom_line() + theme_bw() + labs(title =  "Figur 1: Endring i fettfri benmasse",
+       y = "Fettfri benmasse",
+       x = "Tid",
+       caption = "Figur 1 viser forskjellen mellom 1 og 3 sett for hver deltaker, sortert av farger.")
+
+lmb2
+
+```
+
+\pagebreak
+
+## Diskusjon
+
+Hovedfunnene i den gjeldende studien viser at to til tre styrketreningseøkter i uka over en 12-ukers treningsintervensjon ga økt muskelstyrke samt økt fettfri benmasse i beina. Disse resultatene er i tråd med tidligere forskning [@galvao_resistance_2005; @krieger_2009; @krieger_2010; @schoenfeld_2016] som viser at tre sett har større effekt enn ett sett med styrketrening på muskelstyrke og hypertrofi.
+
+Det samme fant @brigatto_high_2022 som også så en sammenheng med at flere sett var gunstig for å oppnå større grad av muskelvekst og økt muskelstyrke. Forfatterne fra denne studien finner en signifikant økning på muskelstyrke på høyt treningsvolum sammenlignet med lavere treningsvolum. I en annen studie fant @hass_single_2000 en signifikant økning i muskelstyrke og hypertrofi i tre sett styrketrening sammenlignet med ett sett styrketrening På beinøvelser. Det interessante her var at man ikke så noen forskjell på overkroppsøvelser. Lignende observasjoner ble sett hos [@ronnestad_2007; @schoenfeld_effects_2015] og man kan derfor anta at beinøvelser krever et større stimuli enn overkroppsøvelser for å oppnå styrkeadaptasjoner.
+
+En studie gjort av @schoenfeld_resistance_2019 konluderte muskelhypertrofi følger et dose-respons-forhold, der et økt treningsvolum førte til mer muskelhypertrofi sammenlignet med et mindre volum. Dette samsvarer med våre funn i denne studien.
+
+## Konklusjon
+
+Resultatene bekrefter hypotesen vår om at 3 sett gir større effekt på muskelstyrke og hypertrofi sammenlignet med 1 sett styrketrening.

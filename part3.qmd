@@ -1,3 +1,95 @@
+---
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
 # Deloppgave 3: Vitenskapsfilosofi
 
-<!-- Part 3: Philosophy of science -->
+## Arbeidskrav i vitenskapsteori
+
+Oppgave 1) Karl Popper var en østerisk filosof som levde fra 1902 til 1994.
+Han hadde stor innflytelse på vitenskapsmenn for hans ideer innen kritisk rasjonalisme og falsifisering.
+Han hadde blant annet sterke meninger om at induktive argumenter ikke kan brukes i vitenskapen da de er verdiløse.
+Han mente videre at deduktive argumenter er de eneste argumentene som faktisk kan brukes for å argumentere for vitenskapelige teorier.
+Poppers ideer går videre ut på at vitenskapelige teorier ikke kan deduseres fra data.
+Dermed vil aldri data kunne bli brukt som argumentasjon for vitenskapelige teorier.
+Data skal heller kun ha som rolle å falsifisere allerede formulerte teorier.
+Popper\`'s falsifiserbarhetskriterium går ut på å løse demarkasjonsproblemet.
+Dette handler om å skille vitenskapelige teorier fra pseudovitenskap.
+Pseudovitenskap er undersøkelser som presenteres som vitenskap, men som ikke følger vitenskapens prinsipper for empirisk testing av hypoteser (Ystnes & Kjøll, 2021) og gir ufullstendige svar.
+Løsningen på dette var ifølge Popper falsifisering for å kunne skille vitenskapelige påstander fra andre typer påstander.
+Med andre ord vil en vitenskapelig teori være falsifiserbar mens pseudovitenskap vil være ufalsifiserbar.
+Likevel mente han at falsifiserte vitenskapelige teorier ikke burde aksepteres og at vi bare burde akseptere ufalsifiserte, men falsifiserbare, teorier [@popper1985].
+Et eksempel på dette er teorien om at alle svaner er hvite.
+Dette er en falsifiserbar teori som alle kan etterprøve og med det en vitenskapelig teori ifølge Popper.
+Med en gang man har observert en svart svane vil likevel teorien være falsifisert og med det ikke akseptert.
+Spørsmålet andre vitenskapelige filosofer har stilt seg er om man egentlig trenger å løse demarkasjonsproblemet.
+Der Popper mener at det finnes en skarp linje mellom vitenskapelige- og uvitenskapelige teorier, mener andre filosofer at denne linjen ikke er like skarp.
+Andre filosofer som Okasha mente at vitenskapelig forskning ofte bruker induktiv resonnering når man har begrenset empiri for å trekke en slutning [@okasha2016].
+Dette blir en sannsynlig «sannhet» hvor kunnskapen sannsynligvis samsvarer med virkeligheten, er logisk og konsistent og ofte er nyttig og fruktbar).
+Han mener at det i større grad handler om å skille mellom godt- og dårlig bekreftede teorier og at en teori i stor grad fremdeles kan være sann selv om den blir falsifisert.
+Basert på min egen lille erfaring med forskning og vitenskap er jeg mer enig i at godt bekreftede teorier kan være sanne selv om de ved enkelttilfeller er falsifisert.
+Innen idrettsforskning kan man se dette ofte, at godt bekreftede teorier om for eksempel utholdenhetstrening blir falsifisert.
+Likevel er teoriene godt bekreftede ved flere andre tilfeller og vil generelt gjelde uten at det alltid er stemmer.
+Dette kan skyldes blant annet at teorien er sårbar for støy som i utholdenhetsidretter kan være forskjeller i matinntak, søvn, menstruasjonssyklus osv.
+Mitt synspunkt er i alle fall at det blir for enkelt å ikke akseptere teorier som er sårbare for annet støy om teoriene ved enkelttilfeller blir falsifisert.
+
+Oppgave 2) Carl Hempel var en tysk-amerikansk filosof som levde fra 1905-1997.
+Hempel var en av filosofene som var uenige med Popper i at vitenskapen ikke bruker noen form for induksjon.
+Hempel snakket i stedet om to ulike kontekster.
+Oppdagelseskonteksten går ut på at nye teorier ikke blir oppdaget basert på en spesiell metode.
+Han mener heller at god fantasi og oppfinnsomhet er nøkkelen til oppdagelsen av nye teorier.
+Det finnes med andre ord ingen riktig eller gal måte å oppdage nye teorier på.
+Metoden Hempel derimot syntes var viktig var begrunnelseskonteksten.
+Denne metoden skal brukes for å begrunne eller bekrefte nye teorier.
+Dette er også kalt den hypotetisk-deduktive metoden [@hempel1966].
+Strukturen i denne metoden går først ut på å formulere eller oppdage en teori eller hypotese.
+Denne delen av strukturen er som sagt veldig åpen, hvor man både kan bruke tidligere litteratur eller helt nye ideer for å formulere en hypotese.
+Det neste steget handler om å dedusere data fra teorien og samle inn data eller empiri før man så skal teste de empiriske konsekvensene i observasjoner eller forsøk.
+Hvis det viser seg at den innsamlede dataen stemmer overens med teorien, vil teorien være induktivt bekreftet, til en viss grad [@hempel1966a].
+Et eksempel på HD-metoden kan være en hypotese på at koffein gir økt utholdenhetsprestasjon.
+Da måtte i så fall utøvere som tok koffein i forbindelse med utholdenhetstest fått en bedre prestasjon enn de hadde uten inntak av koffein.
+Tester og forsøk viser så at inntak av koffein faktisk gir en forbedring i utholdenhetsprestasjon som gjør at det stemmer med den empiriske konsekvensen.
+Vi har da fått en induktiv bekreftelse på at koffein gir økt utholdenhetsprestasjon.
+Sammenligner man Hempel\`s HD-metode med lignende metoder som abduksjon er den store forskjellen at man i abduksjon må sammenligne teorien man ønsker å bekrefte med andre teorier som potensielt beskriver samme fenomen.
+Så der HD-metoden kun brukte en teori til å dedusere dataen fra teorien, bruker abduksjon fler lignende teorier.
+Men på samme måte som i HD-metoden vil man ved bekreftelse av de empiriske konsekvensene i abduksjon, få en induktiv bekreftelse av teorien.
+Bayesianismen går mer ut på at rasjonelle teoretikere må ha subjektive meninger om hvor sannsynlig ulike påstander er.
+Hvis et rasjonelt menneske mener at en teori har 50% sannsynlighet for å være sann, må det denne personen legge til en 50% sannsynlighet for at påstanden er usann.
+Innen bayesianismen bruker man kondisjonaliseringsregelen ved innhenting av data.
+Når data er innhentet burde man oppdatere teorien ved å endre sannsynlighetsverdien for teorien gitt data.
+Man burde altså endre sannsynlighetsverdiene ettersom man får en oppdatering i data.
+Ved inkremental bekreftelse vil sannsynligheten for en teori økes når man kondisjonaliserer dataen, men kun til en viss bekreftelse.
+Ved absolutt bekreftelse burde teorien aksepteres ettersom sannsynligheten for teorien er tilstrekkelig høy etter kondisjonaliseringen av data.
+
+Oppgave 3) For å sjekke om resultater fra tidligere studier lar seg gjenta er det innen forskningsfeltet vanlig å gjennomføre en lignende studie på nytt.
+Dette kalles for replikasjon.
+Det er viktig med replikasjon for å kunne sementere forskningsfunn.
+Funnene skal med andre ord kunne demonstreres på nytt.
+I tillegg er det viktig å korrigere for publikasjonsbias for å utelukke svakheter og andre motiver i allerede publiserte artikler.
+Det finnes også muligheter for tvilsom forskningspraksis da forskere lever av å publisere forskningsresultater.
+Dette kan føre til at forskere er for «runde» i kantene rundt datainnsamling, analyse, rapportering og andre forhold som gjør at forskningsrapporten ender opp som et forskjønnet bilde av virkeligheten.
+Replikasjon vil også fungere godt for å avsløre fusk (Svartdal, 2022).
+
+Alexander Bird er en britisk filosof og professor på universitet i Cambridge.
+I 2018 publiserte han en artikkel, Understanding the Replication Crisis as a Base Rate Fallacy, om replikasjonskrisen.
+Han skriver om at replikasjonskrisen i sosial psykologi og klinisk medisin oppstår da mange tilsynelatende godt bekreftede forskningsresultater senere blir omgjort av studier som tar sikte på å gjenskape den opprinnelige studien.
+Han argumenter så at den høye frekvensen av negative replikasjoner stemmer overens med forskning av høy kvalitet.
+Man forventer et slikt resultat dersom det aktuelle vitenskapsfeltet produserer en høy andel falske hypoteser før testing.
+Hvis det er slik at de fleste hypotesene er falske, vil det være mange falske hypoteser som tilsynelatende støttes av godt utførte eksperimenter og signifikanstesting av nullhypoteser med en type 1 feilrate på 5% [@bird2021].
+En undersøkelse gjort av The Nature rapporterte at 60% mente presset om publisering og selektiv rapportering spilte en stor rolle i krisen rundt mislykkede replikasjoner.
+Mer enn 50% refererte til utilstrekkelig replikering i laboratoriet, dårlig tilsyn eller lav statistisk styrke.
+Positive resultater i et forskningsfelt er en kombinasjon av falskt positive og ekte positive resultater.
+Det betyr at det er stor sjanse for at et positivt resultat kan være falskt positivt.
+Økt styrke i studier hvor statistisk styrke ofte er lavt er fordelaktig [@bird2021].
+Bird mener publikasjons bias ikke kan forklare replikasjonskrisen fordi det ikke kan forklare hvorfor det er falskt positive resultater, da det uten falskt positive resultater ikke kan være noen krise.
+Publikasjons bias kan likevel være et problem.
+Hvis det er en liten sjanse for at falskt positive resultater blir publisert, er det viktig at negative resultater i samme retning også blir publisert.
+Da er det mindre sjanse for at samfunnet aksepterer det positive resultatet som et endelig resultat.
+Dette kommer av at for eksempel meta-analyser samler mange forskningsartikler som samler alt av data.
+Effekten av negative resultater vil potensielt da ikke gjøre resultatet statistisk signifikant [@bird2021].
+Jeg er enig med Bird at publikasjons bias er et stort problem for vitenskapen.
+Problemet med replikeringskrisen er publisering av feilaktige studier, og ikke at korrekte studier ikke blir publisert.
+En stor del av følelsen for krise i noen deler av vitenskapen er bekymringen for at replikasjonsfeilene skyldes dårlig administrerte eksperimenter som tillater en ubevisst bias.
+Dette skyldes i følge Bird en publiserings eller forsvinn holdning innen vitenskapen som leder til en tvilsom forskningspraksis.

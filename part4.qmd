@@ -1,3 +1,44 @@
 # Deloppgave 4: Studiedesign
 
-<!-- Part 4: Study designs -->
+---
+title: "Assignment 4"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+## Intro
+
+Jeg har valgt å analysere studier som har undersøkt effekten blokk periodisering har på VO2maks.
+
+En av de viktigste bestemmende faktorene for utholdenhetsprestasjon er maksimalt oksygenopptak [@pate1984]. Det er derfor av interesse å undersøke hvordan VO2maks blir påvirket av ulike utholdenhetstrenings protokoller og regimer. I et treningsregime hvor man fokuserer på å forbedre for mange ferdigheter samtidig kan det gi suboptimale treningsadaptasjoner hos godt trente utøvere [@issurin2010]. Som en motsetning tillater blokkperiodisering utøveren å fokusere på å utvikle noen få ferdigheter i hver blokk og med det sørge for tilstrekkelig stimuli og adaptasjoner [@issurin2010]. Jeg ønsker derfor nå å analysere studiene til [@rønnestad2014], [@rønnestad2019], [@breil2010], [@garcía-pallarés2010] og [@støren2012] hvor de undersøker effektene av blokkperiodisering på adaptasjoner i VO2maks.
+
+[@rønnestad2014] hypotetiserer at blokkperiodisering av fem høy intensive treningsøkter (HIT) på 1 uke etterfulgt av 3 uker med kun 1 HIT-økt i uka i tillegg til rolig trening gir større adaptasjoner i VO2maks enn 4 uker med 2 HIT-økter i uka i tillegg til rolig trening hos trente syklister. Lignende hypotetiserer [@breil2010] at 15 HIT-økter på 11 dager gir større adaptasjoner i VO2maks enn tradisjonell variert trening. Også [@garcía-pallarés2010] hypotetiserer at blokkperiodisering kan være mer effektiv enn tradisjonell periodisering for å utvikle VO2maks. På samme måte hypotetiserer [@rønnestad2019] at blokkperiodisering av styrke- og utholdenhetstrening gir større adaptasjoner i VO2maks enn å samtidig fokusere på å utvikle styrke og utholdenhet over en 6 ukers treningsintervensjon. [@støren2012] hypotetiserer at en redusering i total treningsvolum og økt varighet av HIT forbedrer VO2maks.
+
+\pagebreak
+
+## Metode
+
+I [@rønnestad2014] ble 19 godt trente syklister tilfeldig delt inn i to ulike grupper, en blokkperiodiserings-gruppe(BP;n = 10) og en kontrollgruppe(TRAD;n = 9) som trente tradisjonelt. På samme måte ble 16 u18 og u20 hockeyspillere på nasjonalt nivå delt inn i en BP(n = 8) og en TRAD(n = 8) i [@rønnestad2019]. Fysiske tester, derav VO2maks, ble i disse to studiene gjennomført før og etter treningsintervensjonene. En lik tilnærming ble gjort av [@breil2010] med unntak av at inndelingen av 21 trente junior alpinister ikke var tilfeldig BP(n = 13) og TRAD(n = 8). Fysiske tester ble også her gjennomført før intervensjonen og 7 dager etter intervensjonen. I [@garcía-pallarés2010] gjennomførte de derimot en crossover studie, hvor 10 elite kajakk-padlere på olympisk nivå(n = 10) det ene året trente med en tradisjonel tilnærming til periodisering, mens de det andre året fokuserte på blokkperiodisering. I denne studien gjennomførte de fysiske tester 4 ganger gjennom både den tradisjonelle periodiseringsfasen og blokkperiodiseringsfasen. I [@støren2012] gjennomførte en elite landveisyklist på nasjonalt nivå en single case study hvor de over et år varierte treningsregimet mellom tradisjonell periodisering og blokkperiodisering. Studien gikk over et år og det ble gjennomført fysiske tester fem ganger i denne perioden. Det som går igjen i alle studiene er periodiseringen av trening som en uavhengig, manipulerbar variabel og de fysiske testen, og derav VO2maks, som den avhgengige variabelen.
+
+Med unntak av [@støren2012a] var alle studiene jeg har undersøkt intervensjonsstudier. [@rønnestad2014a][@rønnestad2019][@breil2010a] gjennomførte studiene med en "behandlingsgruppe" og en kontrollgruppe. Det er positivt med en kontrollgruppe, men optimalt sett kunne man kjørt en cross-over studie hvor kontrollgruppen senere kunne vært behandlingsgruppen. Med dette utelukker man potensielle adaptasjonsforskjeller i de ulike gruppene. [@garcía-pallarés2010] gjennomførte derimot en crossover studie der utøverne byttet treningsmetode fra år en til to. Problemet i denne studien var mangel på kontrollgruppe. [@støren2012a] er en single case studie hvor de observerer trening over et helt år. Med gode testmetoder og batterier er dette et spennende design, men det blir vanskelig å selge inn at dette gjelder for populasjonen generelt da det bare er en forsøksperson.
+
+## Analyse
+
+[@rønnestad2014] kalkulerte effektstørrelse som Chonen\`s d for å sammenligne den praktiske signifikansen prestasjonsforbedringene i de to gruppene. For å teste forskjeller mellom gruppene ved pretest ble en uparet Students t-test brukt. pre- og post intervensjonsmålinger for hver gruppe ble sammenlignet ved bruk av en paret Students t-test. For å teste forskjeller i relative forandringer mellom gruppene ble en uparet Students t-test brukt.
+
+[@breil2010] brukte en tohalet Students t-test for å teste forskjellene mellom gruppene ved pretest. Forskjeller mellom pre- og postintervensjon ble testet for signifikans av en tohalet Students t-test for parede utvalg. En ANOVA test på to faktorer ble brukt for å sammenligne gruppene.
+
+[@garcía-pallarés2010] brukte Mann- Whitney U og t-test for å evaluere forskjeller i de utvalgte variablene over de to syklusene. Friedman ble lagt til for å evaluere endringer i de fire testene og to syklusene. Effektstørrelse for endring i begge treningsmodellene mellom T0-T1, T1-T2, T2-T3 og T0-T3 ble kalkulert som forskjellene mellom gjennomsnittene delt på gjennomsnittlig standard avvik for begge gruppene.
+
+I [@rønnestad2019] ble en ANOVA brukt for å sjekke forskjeller mellom gruppene med hensyn til endringer i de målte parameterne. Effektstørrelsen av blokkperiodisering ble kalkulert som (\[BP gjennomsnitt−TRAD gjennomsnitt\]/TRAD standard avvik).For disse studiene ble alle resultater med en P-verdi \< 0.05 ansett som statisk signifikant.
+
+I [@støren2012] ble alt av trening og testdata presentert som beskrivende statistikk ettersom studien var en et års case studie.
+
+## Resultat
+
+I [@rønnestad2014] så man at de relative endringene i VO2maks var signifikant større hos BP enn i TRAD (P\<0.05). BP hadde en forbedring av relativ VO2maks på 4,6% (P\<0.05), mens ingen signifikant forbedring skjedde i TRAD. [@breil2010] Så de en signifikant forbedring i relativ VO2maks i blokkperiodiserings-gruppen på 6% (p\<0.05), der kontrollgruppa ikke så noen endirng. Likevel så man en signifikant forbedring i både blokk- og kontrollgruppa på 5,1% og 2,4% i absolutt VO2maks respektivt. [@garcía-pallarés2010] så derimot at både TP og BP ga lignende økninger i VO2peak (11% ES=2,09 og 8,1% ES=2,30 respektivt, p\<0.05). [@rønnestad2019] så at BP hadde større endring i VO2maks enn TRAD (5,1% vs 1,1%, p=0.05, ES=1,04). I single case studien til [@støren2012] så man ingen endring i kroppsvekt og fettprosent, men en forbedring i relativ VO2maks på 10,5%.
+
+## Diskusjon
+
+Den 4,6% økningen i VO2maks observert hos BP hos [@rønnestad2014] står i stil med observasjonene gjort i Breil et al., 2010. Forskjellene i disse studiene var at kontrollgruppa i [@breil2010] fortsatte sin vanlige trening som resulterte i forskjeller i total mengde HIT gjennom intervensjonen. I [@garcía-pallarés2010] konkluderte med at BP var mer effektivt enn TP. De argumenterte for at selv om økningene i VO2maks var like, så hadde TP 10 uker og 120 timer mer trening. [@rønnestad2019] så også en stor fordel av å blokkperiodisere treningen på ishockey-spillere. Dette fordi VO2maks er viktig for evnene til å gjennomføre repeterte sprinter på is.
